@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sahabat Asset - Karyawan Digital Pelacak Aktiva Tetap</title>
+<style>
+:root{--bg:#0b0d12;--card:#141821;--line:#232a38;--text:#e7eaf0;--muted:#8b93a7;--accent:#34d399;--accent2:#38bdf8;--bad:#f87171}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+.wrap{max-width:1040px;margin:0 auto;padding:0 20px}
+section{padding:56px 0}
+h2{font-size:1.6rem;margin-bottom:8px;text-align:center}
+.sub{color:var(--muted);text-align:center;margin-bottom:32px}
+/* Hero */
+.hero{text-align:center;padding:80px 0 56px;background:radial-gradient(ellipse at top,rgba(52,211,153,.12),transparent 60%)}
+.avatar{width:96px;height:96px;margin:0 auto 20px;border-radius:24px;background:linear-gradient(135deg,var(--accent),var(--accent2));display:flex;align-items:center;justify-content:center;font-size:3rem;box-shadow:0 0 40px rgba(52,211,153,.3)}
+.badge{display:inline-flex;align-items:center;gap:6px;padding:6px 14px;border:1px solid var(--line);border-radius:999px;background:var(--card);font-size:.85rem;margin-bottom:20px;animation:glow 2.4s infinite}
+@keyframes glow{0%,100%{box-shadow:0 0 0 0 rgba(52,211,153,.4)}50%{box-shadow:0 0 0 8px rgba(52,211,153,0)}}
+.hero h1{font-size:clamp(2.2rem,6vw,3.6rem);letter-spacing:-.02em;margin-bottom:12px}
+.hero h1 span{background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p{color:var(--muted);max-width:620px;margin:0 auto 28px;font-size:1.1rem}
+.btn{display:inline-block;padding:13px 28px;border-radius:12px;font-weight:600;text-decoration:none;background:linear-gradient(90deg,var(--accent),var(--accent2));color:#04110c;border:0;cursor:pointer;font-size:1rem;transition:transform .2s,box-shadow .2s}
+.btn:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(52,211,153,.35)}
+/* Problem & Solution */
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.box{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:26px}
+.box h3{margin-bottom:14px;font-size:1.15rem}
+.chaos{border-top:3px solid var(--bad)}
+.solve{border-top:3px solid var(--accent)}
+.box ul{list-style:none}
+.box li{padding:10px 0 10px 28px;position:relative;border-bottom:1px dashed var(--line);color:#c9cfdd;font-size:.95rem}
+.box li:last-child{border:0}
+.chaos li::before{content:"✕";position:absolute;left:0;color:var(--bad);font-weight:700}
+.solve li::before{content:"✓";position:absolute;left:0;color:var(--accent);font-weight:700}
+/* Capabilities */
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.cap{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:26px;transition:transform .25s,border-color .25s}
+.cap:hover{transform:translateY(-4px);border-color:var(--accent)}
+.cap .ic{font-size:2rem;margin-bottom:12px}
+.cap h3{margin-bottom:8px;font-size:1.05rem}
+.cap p{color:var(--muted);font-size:.92rem}
+.tag{display:inline-block;margin-top:12px;padding:3px 10px;border-radius:999px;background:rgba(56,189,248,.12);color:var(--accent2);font-size:.75rem}
+/* Chat */
+.chat{max-width:640px;margin:0 auto;background:var(--card);border:1px solid var(--line);border-radius:18px;overflow:hidden}
+.chat-h{padding:14px 18px;border-bottom:1px solid var(--line);display:flex;align-items:center;gap:10px;font-weight:600}
+.dot{width:10px;height:10px;border-radius:50%;background:var(--accent)}
+.msgs{height:340px;overflow-y:auto;padding:18px;display:flex;flex-direction:column;gap:12px}
+.m{max-width:85%;padding:10px 14px;border-radius:14px;font-size:.92rem;animation:pop .3s ease;white-space:pre-line}
+@keyframes pop{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.m.u{align-self:flex-end;background:linear-gradient(90deg,var(--accent),var(--accent2));color:#04110c;border-bottom-right-radius:4px}
+.m.a{align-self:flex-start;background:#1c2230;border-bottom-left-radius:4px}
+.m.ok{border:1px solid var(--accent)}
+.typing{display:flex;gap:4px;padding:14px}
+.typing i{width:7px;height:7px;border-radius:50%;background:var(--muted);animation:bl 1s infinite}
+.typing i:nth-child(2){animation-delay:.2s}.typing i:nth-child(3){animation-delay:.4s}
+@keyframes bl{0%,60%,100%{opacity:.25}30%{opacity:1}}
+.hint{color:var(--muted);text-align:center;margin:auto;font-size:.9rem}
+.scen{display:flex;flex-wrap:wrap;gap:10px;padding:14px 18px;border-top:1px solid var(--line)}
+.scen button{flex:1 1 170px;padding:10px 12px;border-radius:10px;border:1px solid var(--line);background:#10141c;color:var(--text);cursor:pointer;font-size:.85rem;transition:.2s}
+.scen button:hover:not(:disabled){border-color:var(--accent);color:var(--accent)}
+.scen button:disabled{opacity:.45;cursor:not-allowed}
+/* Footer */
+footer{text-align:center;padding:64px 20px 40px;border-top:1px solid var(--line);background:radial-gradient(ellipse at bottom,rgba(56,189,248,.1),transparent 60%)}
+footer h2{margin-bottom:10px}
+footer p.sub{margin-bottom:24px}
+.copy{margin-top:40px;color:var(--muted);font-size:.85rem}
+@media(max-width:760px){.grid2,.grid3{grid-template-columns:1fr}section{padding:40px 0}.hero{padding:56px 0 40px}}
+</style>
+</head>
+<body>
+
+<!-- 1. HERO -->
+<header class="hero">
+  <div class="wrap">
+    <div class="avatar">🏷️</div>
+    <div class="badge">🟢 Status: Active &amp; Ready 24/7</div>
+    <h1>Sahabat <span>Asset</span></h1>
+    <p>Karyawan digital yang menemukan lokasi aktiva tetap Anda dalam hitungan detik dan melaporkan setiap perpindahannya.</p>
+    <a class="btn" href="#simulasi">Coba Simulasi ↓</a>
+  </div>
+</header>
+
+<!-- 2. PROBLEM & SOLUTION -->
+<section>
+  <div class="wrap">
+    <h2>Dari Berantakan Menjadi Terkendali</h2>
+    <p class="sub">Masalah yang selama ini menghambat pengelolaan aktiva tetap, dan jawabannya.</p>
+    <div class="grid2">
+      <div class="box chaos">
+        <h3>😵 The Chaos</h3>
+        <ul>
+          <li>Jumlah aktiva tetap sangat banyak sehingga sulit dimonitor.</li>
+          <li>Aktiva sering dipindahkan lokasinya dan tidak dikembalikan.</li>
+          <li>Aktiva tersebar di banyak lokasi sehingga sulit diketahui keberadaannya.</li>
+          <li>Stock opname sulit dilaksanakan karena banyak item dan banyak lokasi.</li>
+        </ul>
+      </div>
+      <div class="box solve">
+        <h3>✨ The Solution</h3>
+        <ul>
+          <li>Data terintegrasi di Google Drive, sehingga bot mengakses informasi yang akurat.</li>
+          <li>Setiap aktiva punya QR Code. Cukup scan untuk melihat lokasi yang tercatat.</li>
+          <li>Perpindahan lokasi bisa dicatat saat scan QR, dan wajib melalui approval terlebih dahulu.</li>
+          <li>Data selalu mutakhir, stock opname jadi lebih cepat dan terukur.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 3. CORE CAPABILITIES -->
+<section>
+  <div class="wrap">
+    <h2>Kemampuan Utama</h2>
+    <p class="sub">Tiga fondasi yang membuat Sahabat Asset dapat diandalkan.</p>
+    <div class="grid3">
+      <div class="cap"><div class="ic">📁</div><h3>Data Terintegrasi</h3><p>Terhubung langsung ke database aset di Google Drive, sehingga jawaban selalu bersumber dari data terbaru.</p><span class="tag">Google Drive</span></div>
+      <div class="cap"><div class="ic">📱</div><h3>Scan QR Code</h3><p>Setiap aset memiliki QR unik. Scan, dan lokasi tercatat serta riwayatnya langsung tampil.</p><span class="tag">QR Code</span></div>
+      <div class="cap"><div class="ic">🛡️</div><h3>Pindah Lokasi dengan Approval</h3><p>Perubahan lokasi hanya sah setelah disetujui atasan. Data tetap tertib dan bisa dipertanggungjawabkan.</p><span class="tag">Human-in-the-Loop</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- 4. INTERACTIVE SIMULATION -->
+<section id="simulasi">
+  <div class="wrap">
+    <h2>Simulasi Percakapan</h2>
+    <p class="sub">Klik salah satu skenario untuk melihat Sahabat Asset bekerja.</p>
+    <div class="chat">
+      <div class="chat-h"><span class="dot"></span> Sahabat Asset <small style="color:var(--muted);font-weight:400">online</small></div>
+      <div class="msgs" id="msgs"><div class="hint" id="hint">👇 Pilih skenario di bawah untuk memulai</div></div>
+      <div class="scen">
+        <button data-s="0">🔍 Cari lokasi aset</button>
+        <button data-s="1">🔄 Scan QR &amp; pindah lokasi</button>
+        <button data-s="2">📋 Laporan aset berpindah</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 5. FOOTER & CTA -->
+<footer>
+  <div class="wrap">
+    <h2>Siap Mengendalikan Aset Anda?</h2>
+    <p class="sub">Hubungi saya untuk diskusi atau demo Sahabat Asset.</p>
+    <a class="btn" href="https://wa.me/628123456789" target="_blank" rel="noopener">💬 Hubungi via WhatsApp: 08123456789</a>
+    <p class="copy">Built with AI · AI Builder Bootcamp Showcase</p>
+  </div>
+</footer>
+
+<script>
+const scenarios = [
+  {
+    user: "Di mana laptop Asset AT-0142?",
+    bot: [
+      "Ditemukan! 💻 Laptop Dell Latitude (AT-0142)\n📍 Lokasi tercatat: Kantor Cabang Surabaya, Lantai 2, Ruang Finance\n👤 Penanggung jawab: Rina (Staf Accounting)\n🕒 Terakhir terverifikasi: 3 hari lalu"
+    ]
+  },
+  {
+    user: "Saya scan QR Printer AT-0087, mau dipindah ke Gudang Bekasi.",
+    bot: [
+      "QR terbaca ✅ Printer HP LaserJet (AT-0087)\n📍 Lokasi tercatat: Kantor Pusat, Lantai 1",
+      "Perpindahan ke Gudang Bekasi membutuhkan persetujuan. Permintaan sudah saya kirim ke Bapak Andi (Manajer GA) untuk approval. ⏳",
+      "✅ Approval diterima dari Bapak Andi. Lokasi AT-0087 kini diperbarui menjadi Gudang Bekasi dan tersimpan di Google Drive."
+    ]
+  },
+  {
+    user: "Tampilkan laporan aset yang berpindah lokasi minggu ini.",
+    bot: [
+      "Laporan minggu ini, 3 aset berpindah lokasi:\n1. AT-0087 Printer: Kantor Pusat ➜ Gudang Bekasi (disetujui)\n2. AT-0231 Proyektor: Ruang Rapat A ➜ Cabang Bandung (disetujui)\n3. AT-0310 Kursi Ergonomis: Lantai 2 ➜ Lantai 4 (disetujui)",
+      "⚠️ Temuan: 1 aset (AT-0455 Scanner) terdeteksi berada di lokasi berbeda dari catatan, tanpa approval. Sudah saya tandai untuk ditindaklanjuti."
+    ]
+  }
+];
+
+const box = document.getElementById("msgs");
+const btns = document.querySelectorAll(".scen button");
+const wait = ms => new Promise(r => setTimeout(r, ms));
+
+function addMsg(text, cls) {
+  const d = document.createElement("div");
+  d.className = "m " + cls;
+  d.textContent = text;
+  box.appendChild(d);
+  box.scrollTop = box.scrollHeight;
+  return d;
+}
+function showTyping() {
+  const t = document.createElement("div");
+  t.className = "m a typing";
+  t.innerHTML = "<i></i><i></i><i></i>";
+  box.appendChild(t);
+  box.scrollTop = box.scrollHeight;
+  return t;
+}
+
+async function run(i) {
+  btns.forEach(b => b.disabled = true);
+  const hint = document.getElementById("hint");
+  if (hint) hint.remove();
+  box.innerHTML = "";
+  const s = scenarios[i];
+  await wait(300);
+  addMsg(s.user, "u");
+  for (const text of s.bot) {
+    await wait(500);
+    const t = showTyping();
+    await wait(1400);
+    t.remove();
+    addMsg(text, "a" + (text.startsWith("✅ Approval") ? " ok" : ""));
+  }
+  btns.forEach(b => b.disabled = false);
+}
+btns.forEach(b => b.addEventListener("click", () => run(+b.dataset.s)));
+</script>
+</body>
+</html>
